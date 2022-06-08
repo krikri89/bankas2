@@ -5,13 +5,18 @@ require __DIR__ . '/top.php';
 ?>
 
 
-<h1>Alabama Form </h1>
 
 <fieldset>
     <legend>Enter</legend>
-    <form method="post">
+    <form class="form" method="post">
+        <label>Name</label>
         <input type="text" name="alabama">
-        <button type="submit">GO</button>
+        <label>Surname</label>
+        <input type="text" name="surname">
+        <label>Personal number</label>
+        <input type="text" name="personalid">
+        <label>Account Number</label>
+        <button class="form_btn" type="submit">Submit</button>
     </form>
 </fieldset>
 

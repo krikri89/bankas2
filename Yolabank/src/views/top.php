@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <h1>Yo|a Bank</h1>
     <?php require __DIR__ . '/messages.php' ?>
 </body>
 

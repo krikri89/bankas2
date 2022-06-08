@@ -1,8 +1,14 @@
-h1 {
-  color: red;
-  span {
-    font-size: 20px;
-  }
+:root {
+  --first: rgb(161, 179, 166);
+  --gradient: linear-gradient(
+    266deg,
+    rgba(1, 49, 46, 1) 21%,
+    rgba(68, 159, 140, 1) 78%
+  );
+  --shadow: rgb(85, 85, 108);
+  --white: rgb(230, 236, 233);
+  --green: rgba(1, 49, 46, 1);
+  --light: rgba(68, 159, 140, 1);
 }
 
 .success {
@@ -16,4 +22,37 @@ h1 {
   background-color: red;
   border: 1px solid black;
   margin: 5px;
+}
+
+.form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 5px solid var(--green);
+  label {
+    display: block;
+    padding: 1rem 0 0.5rem;
+    font-size: 20px;
+  }
+  input {
+    display: block;
+    width: 100%;
+    border: 2px solid var(--shadow);
+    font-size: 20px;
+    border-radius: 5px;
+  }
+}
+.form_btn {
+  padding: 1.2em;
+  border-radius: 25px;
+  border: none;
+  background-color: var(--green);
+  color: var(--white);
+  margin: 1em 0;
+  width: auto;
+  text-transform: uppercase;
+}
+.form_btn:hover {
+  background-color: var(--shadow);
+  cursor: pointer;
 }

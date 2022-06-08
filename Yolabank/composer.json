@@ -1,0 +1,15 @@
+{
+  "name": "yolabank/main",
+  "autoload": {
+    "psr-4": {
+      "Bankas\\": "src/app"
+    }
+  },
+  "authors": [
+    {
+      "name": "Kristina Rudyte",
+      "email": "rkristina32@yahoo.com"
+    }
+  ],
+  "require": {}
+}

@@ -31,6 +31,11 @@ class App
         extract($data);
         return require __DIR__ . '/../views/' . $name . '.php';
     }
+    public static function json(array $data = [])
+    {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($data);
+    }
     public static function redirect($url = '')
     {
         header('Location:http://' . self::DOMAIN . '/' . $url);
@@ -41,6 +46,9 @@ class App
 
         if (count($uri) == 1 && $uri[0] === '') {
             return (new HomeController)->index();
+        }
+        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'json') {
+            return (new HomeController)->indexJson();
         }
         if ('GET' == $m && count($uri) == 1 && $uri[0] === 'forma') {
             return (new HomeController)->form();

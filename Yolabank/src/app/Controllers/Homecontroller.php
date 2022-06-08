@@ -15,6 +15,14 @@ class HomeController
         }
         return App::view('home', ['title' => 'Alabama', 'list' => $list]);
     }
+    public function indexJson()
+    {
+        $list = [];
+        for ($i = 0; $i < 10; $i++) {
+            $list[] = rand(1000, 9999);
+        }
+        return App::json(['title' => 'Alabama', 'list' => $list]);
+    }
     public function form() //get 
     {
         return App::view('form', ['messages' => M::get()]);

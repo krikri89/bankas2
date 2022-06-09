@@ -4,6 +4,7 @@ namespace Bankas;
 
 use Bankas\Controllers\HomeController;
 use Bankas\Messages;
+use bankas\Controllers\CreateDataJson;
 
 class App
 {
@@ -31,10 +32,15 @@ class App
         extract($data);
         return require __DIR__ . '/../views/' . $name . '.php';
     }
-    public static function json(array $data = [])
+    public static function json(array $data2 = [])
     {
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode($data);
+        echo json_encode($data2);
+    }
+    public static function allAccounts(array $allAccounts = [])
+    {
+        echo json_encode($allAccounts[]);
+        // header('Content-Type: application/json; charset=utf-8');
     }
     public static function redirect($url = '')
     {
@@ -50,6 +56,10 @@ class App
         if ('GET' == $m && count($uri) == 1 && $uri[0] === 'json') {
             return (new HomeController)->indexJson();
         }
+        // if ('GET' == $m && count($uri) == 1 && $uri[0] === 'allAccounts') {
+        //     return (new CreateDataJson)->newAccount();
+        // }
+
         if ('GET' == $m && count($uri) == 1 && $uri[0] === 'forma') {
             return (new HomeController)->form();
         }

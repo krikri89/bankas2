@@ -1,9 +1,9 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/JS/app.js":
+/***/ "./src/js/app.js":
 /*!***********************!*\
-  !*** ./src/JS/app.js ***!
+  !*** ./src/js/app.js ***!
   \***********************/
 /***/ (() => {
 
@@ -161,7 +161,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["public/app"], () => (__webpack_require__("./src/JS/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["public/app"], () => (__webpack_require__("./src/js/app.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["public/app"], () => (__webpack_require__("./src/css/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	

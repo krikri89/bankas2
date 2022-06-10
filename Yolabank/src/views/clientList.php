@@ -21,10 +21,12 @@ require __DIR__ . '/top.php';
         <th>Take out</th>
     </tr>
     <?php
-    // $json_data = file_get_contents(__DIR__ . "/data/duomenys.json");
-    // $duomenys = json_decode($json_data, TRUE);
-    if (count($duomenys) != 0) {
-        foreach ($duomenys as $item) {
+    $json_data = file_get_contents(__DIR__ . "/data/duomenys.json");
+    echo (__DIR__ . "/data/duomenys.json");
+    $duomenys = json_decode($json_data, TRUE);
+
+    if (count($allAccounts) != 0) {
+        foreach ($allAccounts as $item) {
     ?>
             <tr>
                 <td><?= $item['surname'] ?></td>

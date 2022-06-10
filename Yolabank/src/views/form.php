@@ -8,7 +8,6 @@ require __DIR__ . '/top.php';
 
 
 <fieldset>
-    <legend>Enter</legend>
     <form class="form" method="post">
         <label>Name</label>
         <input type="text" name="name">

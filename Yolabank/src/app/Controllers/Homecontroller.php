@@ -21,7 +21,7 @@ class HomeController
         for ($i = 0; $i < 10; $i++) {
             $list[] = rand(1000, 9999);
         }
-        return App::json(['title' => 'Alabama', 'list' => $list]);
+        return App::json(['title' => 'Something', 'list' => $list]);
     }
     public function form() //get 
     {

@@ -40,7 +40,6 @@ class App
     public static function allAccounts(array $allAccounts = [])
     {
         echo json_encode($allAccounts[]);
-        // header('Content-Type: application/json; charset=utf-8');
     }
     public static function redirect($url = '')
     {
@@ -62,9 +61,9 @@ class App
             return (new HomeController)->form();
         }
 
-        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'clientList') {
-            return (new HomeController)->clientList();
-        }
+        // if ('GET' == $m && count($uri) == 1 && $uri[0] === 'clientList') {
+        //     return (new HomeController)->clientList();
+        // }
 
         if ('POST' == $m && count($uri) == 1 && $uri[0] === 'forma') {
             return (new HomeController)->doForm();

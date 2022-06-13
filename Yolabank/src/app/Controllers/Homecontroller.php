@@ -9,19 +9,12 @@ class HomeController
 {
     public function index()
     {
-        $list = [];
-        for ($i = 0; $i < 10; $i++) {
-            $list[] = rand(1000, 9999);
-        }
-        return App::view('home', ['title' => 'Alabama', 'list' => $list]);
+        return App::view('home', ['title' => 'Welcome']);
     }
     public function indexJson()
     {
-        $list = [];
-        for ($i = 0; $i < 10; $i++) {
-            $list[] = rand(1000, 9999);
-        }
-        return App::json(['title' => 'Something', 'list' => $list]);
+
+        echo 'Welcome';
     }
     public function form() //get 
     {

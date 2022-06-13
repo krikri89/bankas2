@@ -7,11 +7,7 @@ require __DIR__ . '/top.php';
 
 <h1>Homepage</h1>
 
-<ul>
-    <?php foreach ($list as $value) : ?>
-        <li><?= $value ?></li>
-    <?php endforeach ?>
-</ul>
+<div class="homepage">Welcome</div>
 
 <?php
 

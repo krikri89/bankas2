@@ -32,12 +32,16 @@ require __DIR__ . '/top.php';
             <td><?= $user['personalId'] ?></td>
             <td>LT<?= $user['accountNumber'] ?></td>
             <td><?= $user['amount'] ?> $</td>
-            <div>
+            <td>
+
                 <form action="<?= 'http://yolabank.lt/delete/' . $user['id'] ?>" method="post">
                     <button type="submit">Delete</button>
                 </form>
+            </td>
+            <td>
                 <a href="<?= 'http://yolabank/edit/' . $user['id'] ?>">Edit</a>
-            </div>
+            </td>
+
         <?php endforeach ?>
         </tr>
 

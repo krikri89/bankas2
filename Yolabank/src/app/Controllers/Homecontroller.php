@@ -22,9 +22,8 @@ class HomeController
     }
     public function clientList()
     {
-        App::view('clientList');
-        // $allAccounts = json_decode(file_get_contents(__DIR__ . "/../data/duomenys.json"), TRUE);
-        // return App::view('clientList', [$allAccounts]);
+        $allAccounts = json_decode(file_get_contents(__DIR__ . "/../data/duomenys.json"), TRUE);
+        App::view('clientList', ['messages' => M::get(), 'allAccounts' => $allAccounts]);
     }
     public function doform() // post
     {

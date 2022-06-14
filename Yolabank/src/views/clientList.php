@@ -21,8 +21,8 @@ require __DIR__ . '/top.php';
         <th>Take out</th>
     </tr>
     <?php
-    $json_data = file_get_contents(__DIR__ . "/data/duomenys.json");
-    echo (__DIR__ . "/data/duomenys.json");
+    $json_data = file_get_contents(__DIR__ . "/../app/data/duomenys.json");
+    echo (__DIR__ . "/../app/data/duomenys.json");
     $duomenys = json_decode($json_data, TRUE);
 
     if (count($allAccounts) != 0) {

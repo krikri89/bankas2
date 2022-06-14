@@ -23,10 +23,10 @@ require __DIR__ . '/top.php';
     <?php
 
 
-    foreach ($allAccounts as $key => $user) : ?>
+    foreach ($account as $key => $user) : ?>
         <tr>
 
-            <td><?= $user['userId'] ?></td>
+            <!-- <td><?= $user['userId'] ?></td> -->
             <td><?= $user['surname'] ?></td>
             <td><?= $user['name'] ?></td>
             <td><?= $user['personalId'] ?></td>
@@ -36,7 +36,7 @@ require __DIR__ . '/top.php';
                 <form action="<?= 'http://yolabank.lt/delete/' . $user['id'] ?>" method="post">
                     <button type="submit">Delete</button>
                 </form>
-                <a href="<?= 'http://yolabank/edit' . $user['$id'] ?>">Edit</a>
+                <a href="<?= 'http://yolabank/edit/' . $user['id'] ?>">Edit</a>
             </div>
         <?php endforeach ?>
         </tr>

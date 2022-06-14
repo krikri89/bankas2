@@ -1,40 +1,34 @@
 <?php
 
-namespace App\DB;
+namespace Bankas\Controllers;
 
 use App\DB\DataBase;
 
-class Json implements DataBase
+class JsonController implements DataBase
 {
     private $data;
-    private static $me;
-    public static function get()
-    {
-        return self::$me ?? self::$me = new self;
-    }
     public function __construct()
     {
-        if (!file_exists(__DIR__ . '/../data/list.json')) {
-            file_put_contents(__DIR__ . '/../data/list.json', json_encode([]));
-            file_put_contents(__DIR__ . '/../data/user_id.json', 0);
+        if (!file_exists(__DIR__ . '/../../data/list.json')) {
+            file_put_contents(__DIR__ . '/../../data/list.json', json_encode([]));
+            file_put_contents(__DIR__ . '/../../data/user_id.json', 0);
         }
-        $this->data = json_decode(file_get_contents(__DIR__ . '/../data/list.json'), 1);
+        $this->data = json_decode(file_get_contents(__DIR__ . '/../../data/list.json'), 1);
     }
     public function __destruct()
     {
-        file_put_contents(__DIR__ . '/../data/list.json', json_encode($this->data));
+        file_put_contents(__DIR__ . '/../../data/list.json', json_encode($this->data));
     }
     private function getId()
     {
-        $id = (int) file_get_contents(__DIR__ . '/../data/user_id.json');
+        $id = (int) file_get_contents(__DIR__ . '/../../data/user_id.json');
         $id++;
-        file_put_contents(__DIR__ . '/../data/user_id.json', $id);
+        file_put_contents(__DIR__ . '/../../data/user_id.json', $id);
         return $id;
     }
     public function create(array $postData): void
     {
         $postData['id'] = $this->getId();
-        print_r($postData);
         $this->data[] = $postData;
     }
     public function showAll(): array

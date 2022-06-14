@@ -2,7 +2,7 @@
 
 namespace Bankas\Controllers;
 
-use App\DB\Json;
+use Bankas\Controllers\JsonController as Json;
 use Bankas\App;
 use Bankas\Messages as M;
 
@@ -14,8 +14,8 @@ class HomeController
     }
     public function list()
     {
-        $user = Json::get()->showall();
-        return App::view('list', ['title' => 'List', 'allAccounts' => $user]);
+        $user = (new Json)->showall();
+        return App::view('list', ['title' => 'List', 'account' => $user]);
     }
     public function newAccount()
     {
@@ -27,24 +27,25 @@ class HomeController
             'accountNumber' => ($_POST['accountNumber'] ?? 0),
             'amount' => ($_POST['amount'] ?? 0)
         ];
-        Json::get()->create($account);
+        (new Json)->create($account);
         return App::redirect('list');
     }
     public function deleteAccount(string $id)
     {
-        Json::get()->delete($id);
+        $data = (new Json);
+        $data->delete($id);
         return App::redirect('list');
     }
     public function toAdd(string $id)
     {
-        $user = Json::get()->show($id);
+        $user = (new Json)->show($id);
         return App::view('edit', ['title' => 'User', 'allAccounts' => $user]);
     }
     public function add(string $id)
     {
-        $clientData = Json::get()->show($id);
+        $clientData = (new Json)->show($id);
         $clientData['amount'] = $_POST['amount'];
-        Json::get()->update($id, $clientData);
+        (new Json)->update($id, $clientData);
         return App::redirect('list');
     }
 }

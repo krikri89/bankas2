@@ -12,13 +12,11 @@ require __DIR__ . '/top.php';
     <tr>
         <th>Surname</th>
         <th>Name</th>
-        <th>Client number</th>
         <th>Personal Number</th>
         <th>Account Number</th>
         <th>Amount</th>
         <th>Delete</th>
-        <th>Add </th>
-        <th>Take out</th>
+        <th>Edit</th>
     </tr>
     <?php
 

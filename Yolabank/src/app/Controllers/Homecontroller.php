@@ -22,7 +22,6 @@ class HomeController
         $account = [
             'surname' => ($_POST['surname'] ?? 0),
             'name' => ($_POST['name'] ?? 0),
-            'userId' => ($_POST['userId'] ?? 0),
             'personalId' => ($_POST['personalId'] ?? 0),
             'accountNumber' => ($_POST['accountNumber'] ?? 0),
             'amount' => ($_POST['amount'] ?? 0)

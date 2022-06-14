@@ -11,6 +11,8 @@
 
 <body>
     <h1>Yo|a Bank</h1>
+    <a href="<?= 'http://yolabank.lt/' ?>">New account</a>
+    <a href="<?= 'http://yolabank.lt/list' ?>">All accounts</a>
     <?php require __DIR__ . '/messages.php' ?>
 </body>
 

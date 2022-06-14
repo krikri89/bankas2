@@ -9,10 +9,10 @@ require __DIR__ . '/top.php';
 
 <form method="POST">
 
+    <!-- use Id <input type="number" name="userId"> -->
     Surname <input type="text" name="surname">
     Name <input type="text" name="name">
-    use Id <input type="number" name="userId">
-    Personal Id<input type="numebr" name="personalId">
+    Personal Id<input type="number" name="personalId">
     Account number<input type="number" name="accountNumber">
     amount <input type="number" name="amount">
     <button type="submit">Create</button>

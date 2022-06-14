@@ -2,6 +2,7 @@
 
 namespace Bankas\Controllers;
 
+use App\DB\Json;
 use Bankas\App;
 use Bankas\Messages as M;
 
@@ -9,43 +10,41 @@ class HomeController
 {
     public function index()
     {
-        return App::view('home', ['title' => 'Welcome']);
+        return App::view('home', ['title' => 'Welcome', 'messages' => M::get()]);
     }
-    public function indexJson()
+    public function list()
     {
-
-        echo 'Welcome';
+        $user = Json::get()->showall();
+        return App::view('list', ['title' => 'List', 'allAccounts' => $user]);
     }
-    public function form() //get 
+    public function newAccount()
     {
-        return App::view('form', ['messages' => M::get()]);
+        $account = [
+            'surname' => ($_POST['surname'] ?? 0),
+            'name' => ($_POST['name'] ?? 0),
+            'userId' => ($_POST['userId'] ?? 0),
+            'personalId' => ($_POST['personalId'] ?? 0),
+            'accountNumber' => ($_POST['accountNumber'] ?? 0),
+            'amount' => ($_POST['amount'] ?? 0)
+        ];
+        Json::get()->create($account);
+        return App::redirect('list');
     }
-    public function clientList()
+    public function deleteAccount(string $id)
     {
-        $allAccounts = json_decode(file_get_contents(__DIR__ . "/../data/duomenys.json"), TRUE);
-        App::view('clientList', ['messages' => M::get(), 'allAccounts' => $allAccounts]);
+        Json::get()->delete($id);
+        return App::redirect('list');
     }
-    public function doform() // post
+    public function toAdd(string $id)
     {
-        M::add('Sas sukurta', 'alert');
-
-        $accountNr = '';
-        $client = '';
-        $amount = 0;
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!file_exists(__DIR__ . "/../data/duomenys.json")) {
-                file_put_contents(__DIR__ . "/../data/duomenys.json", json_encode([]));
-            }
-            $allAccounts = json_decode(file_get_contents(__DIR__ . "/../data/duomenys.json"), TRUE);
-            file_put_contents(__DIR__ . "/../data/duomenys.json", json_encode([
-                ...$allAccounts, [...$_POST, "ID" => $client, "accountid" => $accountNr, "amount" => $amount]
-            ]));
-            return App::redirect('forma');
-        }
-        // public function newAccount()
-        // {
-
-        //         return App::view('clientList', [...$_POST, "ID" => $client, "accountid" => $accountNr, "amount" => $amount]);
-        //     }
+        $user = Json::get()->show($id);
+        return App::view('edit', ['title' => 'User', 'allAccounts' => $user]);
+    }
+    public function add(string $id)
+    {
+        $clientData = Json::get()->show($id);
+        $clientData['amount'] = $_POST['amount'];
+        Json::get()->update($id, $clientData);
+        return App::redirect('list');
     }
 }

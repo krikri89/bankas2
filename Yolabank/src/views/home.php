@@ -5,9 +5,19 @@ $title = 'Home';
 require __DIR__ . '/top.php';
 ?>
 
-<h1>Homepage</h1>
+<h1>Bank</h1>
 
-<div class="homepage">Welcome</div>
+<form method="POST">
+
+    Surname <input type="text" name="surname">
+    Name <input type="text" name="name">
+    use Id <input type="number" name="userId">
+    Personal Id<input type="numebr" name="personalId">
+    Account number<input type="number" name="accountNumber">
+    amount <input type="number" name="amount">
+    <button type="submit">Create</button>
+
+</form>
 
 <?php
 

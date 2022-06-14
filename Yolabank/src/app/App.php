@@ -4,7 +4,6 @@ namespace Bankas;
 
 use Bankas\Controllers\HomeController;
 use Bankas\Messages;
-use bankas\Controllers\CreateDataJson;
 
 class App
 {
@@ -32,19 +31,11 @@ class App
         extract($data);
         return require __DIR__ . '/../views/' . $name . '.php';
     }
-    public static function json(array $data2 = [])
+    public static function redirect(string $name)
     {
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode($data2);
+        header('Location: http://' . self::DOMAIN . '/' . $name);
     }
-    public static function allAccounts(array $allAccounts = [])
-    {
-        echo json_encode($allAccounts[]);
-    }
-    public static function redirect($url = '')
-    {
-        header('Location:http://' . self::DOMAIN . '/' . $url);
-    }
+
     private static function route(array $uri)
     {
         $m = $_SERVER['REQUEST_METHOD'];
@@ -53,20 +44,23 @@ class App
             return (new HomeController)->index();
         }
 
-        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'json') {
-            return (new HomeController)->indexJson();
+        if ('GET' == $m && count($uri) == 1 && $uri[0] === '') {
+            return (new HomeController)->newAccount();
         }
 
-        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'forma') {
-            return (new HomeController)->form();
+        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'list') {
+            return (new HomeController)->list();
         }
 
-        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'clientList') {
-            return (new HomeController)->clientList();
+        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'delete') {
+            return (new HomeController)->deleteAccount($uri[1]);
         }
 
-        if ('POST' == $m && count($uri) == 1 && $uri[0] === 'forma') {
-            return (new HomeController)->doForm();
+        if ('POST' == $m && count($uri) == 2 && $uri[0] === 'edit') {
+            return (new HomeController)->toAdd($uri[1]);
+        }
+        if ('POST' == $m && count($uri) == 2 && $uri[0] === 'edit') {
+            return (new HomeController)->Add($uri[1]);
         } else {
             echo 'kita';
         }

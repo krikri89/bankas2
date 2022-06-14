@@ -20,7 +20,7 @@
 
 .alert {
   padding: 5px;
-  background-color: aqua;
+  background-color: red;
   border: 1px solid black;
   margin: 5px;
 }
@@ -58,7 +58,4 @@
 .form_btn:hover {
   background-color: var(--shadow);
   cursor: pointer;
-}
-body {
-  background-color: rgb(218, 221, 221);
 }

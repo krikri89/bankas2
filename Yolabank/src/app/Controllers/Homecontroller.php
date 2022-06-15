@@ -38,12 +38,12 @@ class HomeController
     public function toAdd(string $id)
     {
         $user = (new Json)->show($id);
-        return App::view('edit', ['title' => 'User', 'allAccounts' => $user]);
+        return App::view('addCash', ['title' => 'User', 'account' => $user]);
     }
     public function add(string $id)
     {
         $clientData = (new Json)->show($id);
-        $clientData['amount'] = $_POST['amount'];
+        $clientData['amount'] += $_POST['amount'];
         (new Json)->update($id, $clientData);
         return App::redirect('list');
     }

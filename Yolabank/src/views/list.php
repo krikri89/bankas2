@@ -10,6 +10,7 @@ require __DIR__ . '/top.php';
 
 <table class="table">
     <tr>
+        <th>id</th>
         <th>Surname</th>
         <th>Name</th>
         <th>Personal Number</th>
@@ -20,11 +21,10 @@ require __DIR__ . '/top.php';
     </tr>
     <?php
 
-
     foreach ($account as $key => $user) : ?>
         <tr>
 
-            <!-- <td><?= $user['userId'] ?></td> -->
+            <td><?= $user['id'] ?></td>
             <td><?= $user['surname'] ?></td>
             <td><?= $user['name'] ?></td>
             <td><?= $user['personalId'] ?></td>
@@ -37,7 +37,7 @@ require __DIR__ . '/top.php';
                 </form>
             </td>
             <td>
-                <a href="<?= 'http://yolabank/edit/' . $user['id'] ?>">Edit</a>
+                <a href="<?= '//yolabank.lt/addCash/' . $user['id'] ?>">Edit</a>
             </td>
 
         <?php endforeach ?>

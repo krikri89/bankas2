@@ -52,17 +52,16 @@ class App
             return (new HomeController)->list();
         }
 
-        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'delete') {
+        if ('POST' == $m && count($uri) == 2 && $uri[0] === 'delete') {
             return (new HomeController)->deleteAccount($uri[1]);
         }
 
-        if ('POST' == $m && count($uri) == 2 && $uri[0] === 'edit') {
+        if ('GET' == $m && count($uri) == 2 && $uri[0] === 'addCash') {
             return (new HomeController)->toAdd($uri[1]);
         }
-        if ('GET' == $m && count($uri) == 2 && $uri[0] === 'edit') {
+        if ('POST' == $m && count($uri) == 2 && $uri[0] === 'addCash') {
             return (new HomeController)->Add($uri[1]);
-        } else {
-            echo 'kita';
         }
+        echo 'kita';
     }
 }

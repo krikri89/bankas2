@@ -12,6 +12,10 @@ class App
 
     public static function start()
     {
+        // header('Content-Type: application/json');
+        // header('Access-Control-Allow-Origin: *');
+        // header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT');
+        // header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
         session_start();
         Messages::init();
         ob_start();
@@ -62,6 +66,13 @@ class App
         if ('POST' == $m && count($uri) == 2 && $uri[0] === 'addCash') {
             return (new HomeController)->Add($uri[1]);
         }
-        echo 'kita';
+        // react router --------------------------
+
+        if ('GET' == $m && count($uri) == 2 && $uri[0] === 'api' && $uri[1] === 'home') {
+            return (new HomeController)->list();
+        }
+        if ('POST' == $m && count($uri) == 2 && $uri[0] === 'api' && $uri[1] === 'form') {
+            return (new HomeController)->formJson();
+        }
     }
 }

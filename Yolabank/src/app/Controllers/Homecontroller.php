@@ -14,9 +14,17 @@ class HomeController
     }
     public function list()
     {
+
         $user = (new Json)->showall();
         return App::view('list', ['title' => 'List', 'account' => $user]);
     }
+    public function formJson()
+    {
+        $rawData = file_get_contents("php://input"); // duomenu nuskaitymas
+        $data = json_decode($rawData, 1);
+        return App::view('list', ['msg' => 'ok, Alabama', 'youSay' => $data['alabama']]); //objektas pavadinimu alabama in form
+    }
+
     public function newAccount()
     {
         $account = [

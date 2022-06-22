@@ -15,7 +15,7 @@ function Form({ showForm }) {
       <h1>Create a new account</h1>
 
       <fieldset>
-        <form class="form" method="post">
+        <form className="form" method="post">
           <label>Name</label>
           <input
             type="text"
@@ -39,7 +39,7 @@ function Form({ showForm }) {
           />
           <label>Account Number</label>
 
-          <button class="form_btn" type="button" onClick={go}>
+          <button className="form_btn" type="button" onClick={go}>
             Submit
           </button>
         </form>

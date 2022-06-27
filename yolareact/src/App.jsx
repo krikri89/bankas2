@@ -9,7 +9,6 @@ import Add from './Components/Add';
 import Remove from './Components/Remove';
 
 function App() {
-  
   const [account, setAccount] = useState([]);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
@@ -29,14 +28,12 @@ function App() {
   const [styleCreateList, setStyleCreateList] = useState(null);
 
   useEffect(() => {
-    axios
-      .get('http://yolabank.lt/listJson')
-      .then((res) => setAccount(res.data));
+    axios.get('http://yolabank.lt/list').then((res) => setAccount(res.data));
   }, [lastUpdate]);
 
   useEffect(() => {
     if (null === createAccount) return;
-    axios.post('http://yolabank.lt/listJson', createAccount).then((res) => {
+    axios.post('http://yolabank.lt/list', createAccount).then((res) => {
       setMessageCreate(res.data.msg);
       setStyleCreate(res.data.style);
       setLastUpdate(Date.now());
@@ -46,7 +43,7 @@ function App() {
   useEffect(() => {
     if (null === deleteAccount) return;
     axios
-      .delete('http://yolabank.lt/listJson/' + deleteAccount.client)
+      .delete('http://yolabank.lt/list/' + deleteAccount.client)
       .then((res) => {
         setMessage(res.data.msg);
         setStyleCreateList(res.data.style);
@@ -57,7 +54,7 @@ function App() {
   useEffect(() => {
     if (null === addToAccount) return;
     axios
-      .put('http://yolabank.lt/listJson/' + addToAccount.id, addToAccount)
+      .put('http://yolabank.lt/list/' + addToAccount.id, addToAccount)
       .then((res) => {
         setMessage(res.data.msg);
         setStyleCreateList(res.data.style);
@@ -68,7 +65,7 @@ function App() {
   useEffect(() => {
     if (null === remToAccount) return;
     axios
-      .put('http://yolabank.lt/listJsonRem/' + remToAccount.id, remToAccount)
+      .put('http://yolabank.lt/listRem/' + remToAccount.id, remToAccount)
       .then((res) => {
         setMessage(res.data.msg);
         setStyleCreateList(res.data.style);

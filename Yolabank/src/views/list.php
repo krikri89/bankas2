@@ -9,7 +9,7 @@ require __DIR__ . '/top.php';
 
 
 <table class="table">
-    <tr>
+    <tr >
         <th>id</th>
         <th>Surname</th>
         <th>Name</th>
@@ -33,7 +33,7 @@ require __DIR__ . '/top.php';
             <td>
 
                 <form action="<?= 'http://yolabank.lt/delete/' . $user['id'] ?>" method="post">
-                    <button type="submit">Delete</button>
+                    <button class="form_btn" type="submit">Delete</button>
                 </form>
             </td>
             <td>

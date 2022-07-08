@@ -1,0 +1,15 @@
+{
+    "name": "kristina/bankas",
+    "autoload": {
+        "psr-4": {
+            "Kristina\\Bankas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kristina Rudyte",
+            "email": "rkristina32@yahoo.com"
+        }
+    ],
+    "require": {}
+}

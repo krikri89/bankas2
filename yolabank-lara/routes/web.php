@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BankController as B;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/banks', [B::class, 'index'])->name('banks-index');
+Route::get('/banks/create', [B::class, 'create'])->name('banks-create');
+Route::post('/banks', [B::class, 'store'])->name('banks-store');
+Route::get('/banks/edit/{color}', [B::class, 'edit'])->name('banks-edit');
+Route::put('/banks/{color}', [BC::class, 'update'])->name('banks-update');
+Route::delete('/banks/{color}', [B::class, 'destroy'])->name('banks-delete');

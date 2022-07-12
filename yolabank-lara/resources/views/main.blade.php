@@ -11,6 +11,7 @@
 
 <body>
     @yield('content')
+    @include('msg.main')
 
 </body>
 </html>

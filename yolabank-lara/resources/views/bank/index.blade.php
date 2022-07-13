@@ -1,20 +1,46 @@
 @extends('main')
 
 @section('content')
-<ul>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Personal Number</th>
+        <th>Account Number</th>
+        <th>Amount</th>
+    </tr>
+
+
     @forelse($banks as $bank)
-    <li>
-        <div>{{$bank->color}}</div>
-        <a href="{{route('banks-edit', $bank)}}">EDIT</a>
-        <form class="delete" action="{{route('banks-delete', $color)}}" method="post">
+    <tr>
+
+        <td>{{$bank->id}}</td>
+        <td>{{$bank->name}}</td>
+        <td>{{$bank->surname}}</td>
+        <td>{{$bank->personal_nb}}</td>
+        <td>{{$bank->account_nb}}</td>
+        <td>{{$bank->amount}}</td>
+
+    </tr>
+
+    <div>
+        <a href="{{route('banks-edit', $bank->id)}}">Edit</a>
+        <a href="{{route('banks-show', $bank->id)}}">Show</a>
+        <form class="delete" action="{{route('banks-delete', $bank)}}" method="post">
             @csrf
             @method('delete')
-            <button type="submit">Destroy</button>
+            <button type="submit">Delete</button>
         </form>
-    </li>
+    </div>
+
+
     @empty
     <li>No banks, no life.</li>
     @endforelse
-</ul>
-<a href="{{route('banks-create')}}">Add banks to your life</a>
+
+</table>
+<a href="{{route('banks-create')}}">Create a new account</a>
+
 @endsection

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('surname', 50);
-            $table->int('personalNb');
-            $table->int('accountNb');
+            $table->int('personal_nb');
+            $table->int('account_nb');
             $table->int('amount');
             $table->timestamps();
         });

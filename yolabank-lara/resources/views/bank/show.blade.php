@@ -1,20 +1,40 @@
 @extends('main')
 
 @section('content')
-<ul>
-    <li>
-        <div>{{$bank->color}}
-            <h2>{{$bank->title}}</h2>
-        </div>
-        <div class="controls">
-            <a href="{{route('banks-edit', $color)}}">EDIT</a>
-            <form class="delete" action="{{route('banks-delete', $bank)}}" method="post">
-                @csrf
-                @method('delete')
-                <button type="submit">Delete</button>
-            </form>
-        </div>
-    </li>
-</ul>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Personal Number</th>
+        <th>Account Number</th>
+        <th>Amount</th>
+    </tr>
+
+
+    @forelse($banks as $bank)
+    <tr>
+
+        <td>{{$bank->id}}</td>
+        <td>{{$bank->name}}</td>
+        <td>{{$bank->surname}}</td>
+        <td>{{$bank->personal_nb}}</td>
+        <td>{{$bank->account_nb}}</td>
+        <td>{{$bank->amount}}</td>
+
+    </tr>
+
+    <div>
+        <a href="{{route('banks-edit', $bank->id)}}">Edit</a>
+        <form class="delete" action="{{route('banks-delete', $bank)}}" method="post">
+            @csrf
+            @method('delete')
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+
+</table>
+<a href="{{route('banks-create')}}">Create a new account</a>
+
 
 @endsection

@@ -15,14 +15,14 @@ class BankController extends Controller
      */
     public function index()
     {
-        // $colors = match ($request->sort) {
-        //     'asc' => Color::orderBy('title', 'asc')->get(),
-        //     'desc' => Color::orderBy('title', 'desc')->get(),
-        //     default => Color::all()
+        // $banks = match ($request->sort) {
+        //     'asc' => bank::orderBy('title', 'asc')->get(),
+        //     'desc' => bank::orderBy('title', 'desc')->get(),
+        //     default => bank::all()
         // };
-        // $colors = Color::where('id', '<', 100)->orderBy('title')->get();
+        // $banks = bank::where('id', '<', 100)->orderBy('title')->get();
 
-        // $colors = Color::all()->sortBy('title');
+        // $banks = bank::all()->sortBy('title');
 
         $banks = Bank::all();
         return view('bank.index', ['banks' => $banks]);
@@ -48,8 +48,11 @@ class BankController extends Controller
     {
         $bank = new Bank;
 
-        $bank->color = $request->create_color_input;
-        $bank->title = $request->create_color_title ?? 'no title';
+        $bank->name = $request->name_input;
+        $bank->surname = $request->surname_input;
+        $bank->personal_nb = $request->personal_nb_input;
+        $bank->account_nb = $request->account_nb_input;
+        $bank->amount = $request->amount_input;
 
         $bank->save();
 
@@ -89,8 +92,11 @@ class BankController extends Controller
      */
     public function update(Request $request, Bank $bank)
     {
-        $bank->color = $request->create_color_input;
-        $bank->title = $request->create_color_title ?? 'no title';
+        $bank->name = $request->name_input;
+        $bank->surname = $request->surname_input;
+        $bank->personal_nb = $request->personal_nb_input;
+        $bank->account_nb = $request->account_nb_input;
+        $bank->amount = $request->amount_input;
 
         $bank->save();
 

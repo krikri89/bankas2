@@ -1,6 +1,8 @@
 @extends('main')
 
 @section('content')
+<a href="{{route('banks-create')}}">Create a new account</a>
+
 
 <table>
     <tr>
@@ -10,6 +12,10 @@
         <th>Personal Number</th>
         <th>Account Number</th>
         <th>Amount</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
     </tr>
 
 
@@ -22,18 +28,22 @@
         <td>{{$bank->personal_nb}}</td>
         <td>{{$bank->account_nb}}</td>
         <td>{{$bank->amount}}</td>
+        <td><a href="{{route('banks-show', $bank->id)}}">Show</a></td>
+        <td><a href="{{route('banks-edit', $bank->id)}}">Edit</a></td>
+        <td>
+            <form class="delete" action="{{route('banks-delete', $bank)}}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+
+
+
 
     </tr>
 
-    <div>
-        <a href="{{route('banks-edit', $bank->id)}}">Edit</a>
-        <a href="{{route('banks-show', $bank->id)}}">Show</a>
-        <form class="delete" action="{{route('banks-delete', $bank)}}" method="post">
-            @csrf
-            @method('delete')
-            <button type="submit">Delete</button>
-        </form>
-    </div>
+
 
 
     @empty
@@ -41,6 +51,5 @@
     @endforelse
 
 </table>
-<a href="{{route('banks-create')}}">Create a new account</a>
 
 @endsection

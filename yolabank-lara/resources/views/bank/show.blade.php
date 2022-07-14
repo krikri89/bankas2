@@ -26,7 +26,8 @@
         <td>{{$bank->personal_nb}}</td>
         <td>{{$bank->account_nb}}</td>
         <td>{{$bank->amount}}</td>
-        <td><a href="{{route('banks-edit', $bank->id)}}">Edit</a></td>
+        <td><a href="{{route('banks-edit', $bank->id)}}">Cash in / Cash out</a></td>
+
         <td>
             <form class="delete" action="{{route('banks-delete', $bank)}}" method="post">
                 @csrf

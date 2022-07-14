@@ -98,6 +98,8 @@ class BankController extends Controller
         $bank->account_nb = $request->account_nb_input;
         $bank->amount = $request->amount_input;
 
+        
+
         $bank->save();
 
         return redirect()->route('banks-index');
